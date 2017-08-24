@@ -58,7 +58,7 @@
 	</bean>
 	
 	<bean id="personService" class="com.joaopadilha.service.PersonServiceImplement">
-		<property name="productDao" ref="productDao"></property>
+		<property name="personDao" ref="personDao"></property>
 	</bean>
 	
 	<bean id="rolesDao" class="com.joaopadilha.dao.RolesDAOImplement">
@@ -66,7 +66,7 @@
 	</bean>
 	
 	<bean id="rolesService" class="com.joaopadilha.service.RolesServiceImplement">
-		<property name="productDao" ref="productDao"></property>
+		<property name="rolesDao" ref="rolesDao"></property>
 	</bean>
 	
 </beans>

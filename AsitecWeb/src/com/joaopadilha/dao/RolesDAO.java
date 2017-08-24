@@ -10,4 +10,5 @@ public interface RolesDAO {
 	
 	List<Roles> listRoles();
 	
+	void addRoles(Roles roles) ;
 }

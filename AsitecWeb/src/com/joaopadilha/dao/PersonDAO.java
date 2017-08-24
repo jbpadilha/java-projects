@@ -11,5 +11,6 @@ public interface PersonDAO {
 	
 	List<Person> listPerson();
 	
+	void addPerson(Person person);
 	
 }
