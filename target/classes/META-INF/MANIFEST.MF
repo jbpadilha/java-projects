@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: joaosilva
+Build-Jdk: 10
+Implementation-Title: Statflo Testcode
+Implementation-Version: 0.1.0
+Implementation-Vendor-Id: org.springframework
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/spring-boot-docker-statflo
+Created-By: Maven Integration for Eclipse
+
