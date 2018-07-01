@@ -1,0 +1,58 @@
+#####################################################################################################
+Author: Joao Batista Padilha e Silva
+Purpose: Assessment for PLastic Mobile / SII Canada
+Date: 30/06/2018 - 01/06/2018
+ ####################################################################################################
+ 
+ 
+ 
+ ################################      Structure of the Project      ################################
+ 
+ Language : Java 8
+ Framework: Spring Boot
+ Repository: Maven
+ 
+ 
+ Folders:
+ 
+ -> SRC/COM/JOAOPADILHA/PLASTICMOBILE
+ 
+ 	* Class: 
+ 		- PlasticmobileApplication  >> Initialization for Spring Boot
+ 
+ -> SRC/COM/JOAOPADILHA/PLASTICMOBILE/CONTROLLER
+ 
+ 	* Class: 
+ 		- CraiglistController  >> Controller for Request Purpose. Mapped all URL
+ 		
+ -> SRC/COM/JOAOPADILHA/PLASTICMOBILE/ENTITY
+ 
+ 	* Class: 
+ 		- Craiglist  >> Entity for storage purpose only.
+ 		
+-> SRC/COM/JOAOPADILHA/PLASTICMOBILE/REPOSITORY
+ 
+ 	* Class: 
+ 		- CraiglistRepository  >> Business for search at CraigList Website.
+ 		   => In this case, all knowledge is inside of this class to search inside website and store in an Entity.
+ 		
+ 
+ ################################      How to run the Project      ################################
+ 
+ Steps:
+ 
+ 1 -  run command "mvn package" to bring all dependencies
+ 2 -  run command "mvn spring-boot:run" to run the website.
+ 3 -  Using a browser, write "http://localhost:8080" to bring the first screen.
+ 4 -  Write the word that you would like to search and press the button "Submit".
+ 5 -  All results will show at screen
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

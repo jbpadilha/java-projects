@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function sendForm(){
+
+	var parameterSearch = document.getElementById("search").value;
+	var url = "plasticmobile/"+parameterSearch;
+	document.location.href = url;
+}
+</script>
+</head>
+<body>
+	Welcome to Plastic Mobile CraigList Search
+	<h2>Results of Search in CraigList</h2>
+      <h3>Search in Craiglist:</h3>
+      <label for="title">Search:</label> <input type="text" name="search" size="50" id="search"></input><br />  
+      <br />
+      <input type="button" name="Submit" onclick="sendForm(this.form);" value="Submit"></input>
+</body>
+</html>
