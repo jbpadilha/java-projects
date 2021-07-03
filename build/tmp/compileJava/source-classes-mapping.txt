@@ -4,3 +4,7 @@ ThreadSorting.java
  ThreadSorting
 DateBirth.java
  DateBirth
+AssignmentString.java
+ AssignmentString
+AssignmentStringTest.java
+ AssignmentStringTest
