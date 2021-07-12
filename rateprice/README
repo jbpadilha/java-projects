@@ -1,11 +1,13 @@
 ***************************************************************************************
-**************************  READ ME FILE  *********************************************
+**************************  ##  READ ME FILE ##  *********************************************
 ***************************************************************************************
 
-********** SWAGGER PROJECT  **********
+********** ##  SWAGGER PROJECT ##   **********
 https://app.swaggerhub.com/apis/jbpadilha/Rates/1.0.0
 
-********** REQUIREMENTS  **********
+********** ## REQUIREMENTS ##   **********
+
+Per the requirements, he system starts loading a json file located in `./rates.json`.
 
 1 -  JAVA 11
 2 - DOCKER (IDEALLY)
@@ -25,7 +27,7 @@ ALTERNATIVE TO RUN THROUGH DOCKER:
 1 - docker run -p 8080:8080 "rateprice"
 
 
-********** ENDPOINTS AVAILABLE  **********
+********** ## ENDPOINTS AVAILABLE ##   **********
 
 "/rates"
 -> GET => Returns all rates available in a json file (rates.json)
@@ -55,7 +57,7 @@ Return sample:
 }
 
 
-********** TESTING THE APPLICATION  **********
+********** ## TESTING THE APPLICATION ##   **********
 
 1 - The tests will run during the initialization
 

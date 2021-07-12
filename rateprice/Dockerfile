@@ -1,4 +1,6 @@
-FROM azul/zulu-openjdk-alpine:11.0.11
+FROM adoptopenjdk/openjdk11:latest
+WORKDIR  /
 MAINTAINER rateprice
-COPY target/rateprice-0.0.1-SNAPSHOT.jar rateprice-0.0.1.jar
-ENTRYPOINT ["java","-jar","/rateprice-0.0.1.jar"]
+ARG JAR_FILE=/target/*.jar
+COPY ${JAR_FILE} rateprice.jar
+ENTRYPOINT ["java","-jar","rateprice.jar"]

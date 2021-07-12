@@ -23,7 +23,7 @@ public class ApplicationService {
 
     ObjectMapper mapper = new ObjectMapper();
     // Rates Object Singleton - Retain the json file converted into Rate Object
-    private List<Rate> rates = new LinkedList<>();
+    public List<Rate> rates = new LinkedList<>();
     public ApplicationService() throws Exception {
         try {
             File file = Paths.get("rates.json").toFile();

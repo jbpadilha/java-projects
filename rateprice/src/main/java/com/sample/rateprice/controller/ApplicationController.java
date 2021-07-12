@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import io.prometheus.client.Counter;
 import org.springframework.web.bind.annotation.*;
-
+import io.prometheus.client.Histogram;
 import java.time.ZonedDateTime;
 
 /**
@@ -19,6 +20,13 @@ import java.time.ZonedDateTime;
  */
 @RestController
 public class ApplicationController {
+
+    // request counter metric
+    static final Counter REQUESTS = Counter.build()
+            .name("requests_total").help("Total number of requests.").register();
+    // histogram metric
+    static final Histogram REQUESTS_LATENCY = Histogram.build()
+            .name("requests_latency_seconds").help("Request latency in seconds.").register();
 
     @Autowired
     private ApplicationService applicationService;
@@ -31,6 +39,8 @@ public class ApplicationController {
     @PutMapping("/rates")
     @ResponseBody
     public ResponseEntity<String> putRate(@RequestBody Rates rates) {
+        REQUESTS.inc();
+        Histogram.Timer requestTimer = REQUESTS_LATENCY.startTimer();
         if (rates == null || rates.getRates().length == 0) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
@@ -38,6 +48,8 @@ public class ApplicationController {
             applicationService.save(rates.getRates());
         } catch (Exception e) {
 
+        } finally {
+            requestTimer.observeDuration();
         }
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -49,10 +61,14 @@ public class ApplicationController {
     @GetMapping("/rates")
     @ResponseBody
     public ResponseEntity<Rates> getRate() {
+        REQUESTS.inc();
+        Histogram.Timer requestTimer = REQUESTS_LATENCY.startTimer();
         try{
             return new ResponseEntity(applicationService.getRates(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } finally {
+            requestTimer.observeDuration();
         }
     }
 
@@ -65,6 +81,8 @@ public class ApplicationController {
     @GetMapping("/price")
     public ResponseEntity<ObjectNode> getPrice(@RequestParam("start")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime start,
                                @RequestParam("end")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime end) {
+        REQUESTS.inc();
+        Histogram.Timer requestTimer = REQUESTS_LATENCY.startTimer();
         ObjectNode objectNode = null;
         try {
             Rate rate = applicationService.getRatePrice(start, end);
@@ -75,6 +93,8 @@ public class ApplicationController {
         } catch (Exception e) {
             objectNode.put("Error", "unavailable");
             return new ResponseEntity(objectNode, HttpStatus.BAD_REQUEST);
+        } finally {
+            requestTimer.observeDuration();
         }
     }
 
