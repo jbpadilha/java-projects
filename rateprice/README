@@ -1,0 +1,64 @@
+***************************************************************************************
+**************************  READ ME FILE  *********************************************
+***************************************************************************************
+
+********** SWAGGER PROJECT  **********
+https://app.swaggerhub.com/apis/jbpadilha/Rates/1.0.0
+
+********** REQUIREMENTS  **********
+
+1 -  JAVA 11
+2 - DOCKER (IDEALLY)
+
+
+********** BUILD THE APPLICATION  **********
+
+1 - ./mvnw install
+2 - docker build -t "rateprice" . // TO BUILD DOCKER IMAGE
+
+********** RUN THE APPLICATION  **********
+
+1 - ./mvnw spring-boot:run
+
+ALTERNATIVE TO RUN THROUGH DOCKER:
+
+1 - docker run -p 8080:8080 "rateprice"
+
+
+********** ENDPOINTS AVAILABLE  **********
+
+"/rates"
+-> GET => Returns all rates available in a json file (rates.json)
+-> PUT => Overwrite Json file with rates passed by parameter.
+* If the json file is null, it returns an error
+
+Sample:
+{
+    "rates": [
+        {
+            "days": "mon,tues,thurs",
+            "times": "0900-2100",
+            "tz": "America/Chicago",
+            "price": 1500
+        }
+    ]
+}
+
+
+"/price"
+* Requires 2 parameters (start => Zoned Date Time / end => Zoned Date Time)
+-> GET => Returns the price available
+
+Return sample:
+{
+    "price": 5000
+}
+
+
+********** TESTING THE APPLICATION  **********
+
+1 - The tests will run during the initialization
+
+ALTERNATIVE:
+
+1 - To run the test just type:  "./mvnw test"
